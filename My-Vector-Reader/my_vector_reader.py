@@ -23,4 +23,6 @@ def read_vectors(file_name, coding_type, as_dict=False):
         return words,vectors
 
 if __name__=='__main__':
-    read_vectors('/Users/sunxiaofei/2012-1-embedding.data','latin1')
+    words,vectors=read_vectors('/Users/sunxiaofei/2012-1-embedding.data','utf8')
+    for word in words[:100]:
+        print word.encode('utf8')
