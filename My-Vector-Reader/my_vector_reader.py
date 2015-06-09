@@ -26,9 +26,11 @@ def read_vectors(file_name, coding_type, as_dict=False):
     for line in vector_file:
         line=line.decode(coding_type)[:-1].split(' ')
         word=line[0]
-        vector=map(lambda x:float(x),line[1:])
-        if not len(vector)==vector_size:
+        while '' in line:
+            line.remove('')
+        if not len(line)-1==vector_size:
             continue
+        vector=map(lambda x:float(x),line[1:])
         vocab.append(word)
         vectors.append(vector)
     vectors=numpy.array(vectors)
