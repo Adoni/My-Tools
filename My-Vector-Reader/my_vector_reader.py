@@ -14,6 +14,13 @@ class simple_embedding_cluster_viewer:
         closest_words=numpy.sum((self.vectors-word_vec)**2,axis=1).argsort()
         return map(lambda x:self.vocab[x],closest_words[1:count+1])
 
+    def __getitem__(self,word):
+        if type(word) is str:
+            word=word.decode('utf8')
+        if word not in self.vocab:
+            return None
+        return self.vectors[self.vocab.index(word)]
+
 
 def read_vectors(file_name, coding_type, as_dict=False):
     ##MODE:
