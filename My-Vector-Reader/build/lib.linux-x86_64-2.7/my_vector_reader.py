@@ -2,8 +2,8 @@
 import numpy
 
 class simple_embedding_cluster_viewer:
-    def __init__(self, file_name, coding_type):
-        self.vocab, self.vectors=read_vectors(file_name,coding_type)
+    def __init__(self, file_name, coding_type, as_dict=False):
+        self.vocab, self.vectors=read_vectors(file_name,coding_type,as_dict)
 
     def get_closest_words(self, word, count=10):
         if type(word) is str:
